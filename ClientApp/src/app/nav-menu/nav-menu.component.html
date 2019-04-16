@@ -1,0 +1,25 @@
+<div class='main-nav' >
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <h1 id="title" >{{sender}}</h1>
+            <a role="button" class='navbar-brand' (click)="logout()">LogOut</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
+            <ul class='nav navbar-nav' id="nav-list"  >
+                <li *ngFor='let user of Users'>
+                  <a role="button" (click)="chatPage(user.UserName,user.id)">
+                    <span class="dot" *ngIf='user.connected'></span><span class="reddot" *ngIf='!user.connected'></span> {{user.userName}}<span *ngIf='user.count' class="num">{{user.count}}+</span>
+                  </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>

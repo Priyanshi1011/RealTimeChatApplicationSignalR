@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{model.userName}}</div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body" id="chatdisplay">
+    
+      <div *ngFor="let message of msgHistory; let i = index;">{{message}}</div>
+    <div *ngFor="let message of messages; let i = index">{{message}}</div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
+    <div class="row">
+
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="message" name="message" [(ngModel)]="message" required>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit"  id="sendmessage" [disabled]="!chatForm.valid">
+          Send
+        </button>
+      </div>
+     </div>
+
+</form>
+</div>
+
+
+
